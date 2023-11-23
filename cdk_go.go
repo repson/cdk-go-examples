@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/aws/aws-cdk-go/awscdk/v2"
-	// "github.com/aws/aws-cdk-go/awscdk/v2/awssqs"
+	"github.com/aws/aws-cdk-go/awscdk/v1/awss3"
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/aws/jsii-runtime-go"
 )
@@ -11,11 +11,15 @@ type CdkGoStackProps struct {
 	awscdk.StackProps
 }
 
-func NewCdkGoStack(scope constructs.Construct, id string, props *CdkGoStackProps) awscdk.Stack {
+func NewCdkGoStack(scope constructs.Construct,
+	id string, props *CdkGoStackProps) awscdk.Stack {
+
 	var sprops awscdk.StackProps
+
 	if props != nil {
 		sprops = props.StackProps
 	}
+
 	stack := awscdk.NewStack(scope, &id, &sprops)
 
 	// The code that defines your stack goes here
@@ -24,6 +28,11 @@ func NewCdkGoStack(scope constructs.Construct, id string, props *CdkGoStackProps
 	// queue := awssqs.NewQueue(stack, jsii.String("CdkGoQueue"), &awssqs.QueueProps{
 	// 	VisibilityTimeout: awscdk.Duration_Seconds(jsii.Number(300)),
 	// })
+
+	var bucket = awss3.NewBucket(stack,
+		jsii.String("CdkGoBucket"), &awss3.BucketProps{
+			Versioned: jsii.Bool(true),
+		},
 
 	return stack
 }
