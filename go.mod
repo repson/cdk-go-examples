@@ -1,4 +1,4 @@
-module cdk_go
+module ctg
 
 go 1.18
 

@@ -11,22 +11,18 @@ import (
 )
 
 type config struct {
-	// The name of the cloudformation template to include
 	template string
-	// The AWS region to deploy to
-	Region string
-	// The AWS account to deploy to
-	Account string
-	// Whether to deploy in debug mode
-	Debug bool
+	Region   string
+	Account  string
+	Debug    bool
 }
 
-type CdkGoStackProps struct {
+type CtgStackProps struct {
 	awscdk.StackProps
 }
 
-func NewCdkGoStack(scope constructs.Construct,
-	id string, cfg config, props *CdkGoStackProps) awscdk.Stack {
+func CtgStack(scope constructs.Construct,
+	id string, cfg config, props *CtgStackProps) awscdk.Stack {
 
 	var sprops awscdk.StackProps
 
@@ -57,7 +53,7 @@ func main() {
 	flag.Parse()
 
 	app := awscdk.NewApp(nil)
-	NewCdkGoStack(app, "CdkGoStack", cfg, &CdkGoStackProps{
+	CtgStack(app, "CdkGoStack", cfg, &CtgStackProps{
 		awscdk.StackProps{
 			Env: &awscdk.Environment{
 				Account: jsii.String(cfg.Account),
