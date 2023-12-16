@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 
 	"github.com/aws/aws-cdk-go/awscdk/v2"
@@ -9,12 +10,27 @@ import (
 	"github.com/aws/jsii-runtime-go"
 )
 
+type config struct {
+	// The name of the cloudformation template to include
+	template string
+	// The AWS region to deploy to
+	Region string
+	// The AWS account to deploy to
+	Account string
+	// Whether to deploy in debug mode
+	Debug bool
+}
+
+type application struct {
+	config config
+}
+
 type CdkGoStackProps struct {
 	awscdk.StackProps
 }
 
 func NewCdkGoStack(scope constructs.Construct,
-	id string, props *CdkGoStackProps) awscdk.Stack {
+	id string, cfg config, props *CdkGoStackProps) awscdk.Stack {
 
 	var sprops awscdk.StackProps
 
@@ -26,7 +42,7 @@ func NewCdkGoStack(scope constructs.Construct,
 
 	cfnTemplate := cfn_inc.NewCfnInclude(
 		stack, jsii.String("Template"), &cfn_inc.CfnIncludeProps{
-			TemplateFile: jsii.String("templates/s3.yaml"),
+			TemplateFile: jsii.String(cfg.template),
 		})
 
 	fmt.Println(cfnTemplate.Stack())
@@ -41,11 +57,16 @@ func NewCdkGoStack(scope constructs.Construct,
 }
 
 func main() {
+	var cfg config
+
+	flag.StringVar(&cfg.template, "template", "templates/s3.yaml", "The name of the cloudformation template to include")
+
 	defer jsii.Close()
+	flag.Parse()
 
 	app := awscdk.NewApp(nil)
 
-	NewCdkGoStack(app, "CdkGoStack", &CdkGoStackProps{
+	NewCdkGoStack(app, "CdkGoStack", cfg, &CdkGoStackProps{
 		awscdk.StackProps{
 			Env: env(),
 		},
