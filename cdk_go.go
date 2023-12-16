@@ -1,7 +1,10 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/aws/aws-cdk-go/awscdk/v2"
+	"github.com/aws/aws-cdk-go/awscdk/v2/cloudformationinclude"
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/aws/jsii-runtime-go"
 )
@@ -21,10 +24,12 @@ func NewCdkGoStack(scope constructs.Construct,
 
 	stack := awscdk.NewStack(scope, &id, &sprops)
 
-	cfnTemplate := cfn_inc.CfnInclude(stack, jsii.String("CfnTemplate"), &CfnIncludeProps{
-		templateFile: jsii.String("templates/s3.yaml"),
-	})
+	cfnTemplate := cloudformationinclude.NewCfnInclude(
+		stack, jsii.String("Template"), &cloudformationinclude.CfnIncludeProps{
+			TemplateFile: jsii.String("templates/s3.yaml"),
+		})
 
+	fmt.Println(cfnTemplate.Stack())
 	// var bucket = awss3.NewBucket(stack,
 	// 	jsii.String("CdkGoBucket"), &awss3.BucketProps{
 	// 		Versioned: jsii.Bool(true),

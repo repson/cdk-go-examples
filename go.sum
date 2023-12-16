@@ -7,6 +7,8 @@ github.com/aws/aws-cdk-go/awscdk/v2 v2.110.1 h1:BU6C8w95Y4wtv55sq+cnRxMypZA57iRT
 github.com/aws/aws-cdk-go/awscdk/v2 v2.110.1/go.mod h1:NuvzNmRjbXEofQ35qpl8U+FtjiH+rNKFQXRzSWkOnI8=
 github.com/aws/aws-cdk-go/awscdk/v2 v2.111.0 h1:JnGTHsoTNXDQmgxeqafR64Gx43dyFC/5zc5q5+uUuec=
 github.com/aws/aws-cdk-go/awscdk/v2 v2.111.0/go.mod h1:NuvzNmRjbXEofQ35qpl8U+FtjiH+rNKFQXRzSWkOnI8=
+github.com/aws/aws-cdk-go/awscdk/v2 v2.115.0 h1:KFK218X4pRdoInvQrHyLjtdYd8Klos67ycDFfUTUPl8=
+github.com/aws/aws-cdk-go/awscdk/v2 v2.115.0/go.mod h1:0/6yeUWiya0tE/SKKJ++VkhP/M9QxTBjIb2ZHnLZOH8=
 github.com/aws/aws-sdk-go-v2 v1.23.1 h1:qXaFsOOMA+HsZtX8WoCa+gJnbyW7qyFFBlPqvTSzbaI=
 github.com/aws/aws-sdk-go-v2 v1.23.1/go.mod h1:i1XDttT4rnf6vxc9AuskLc6s7XBee8rlLilKlc03uAA=
 github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.5.1 h1:ZY3108YtBNq96jNZTICHxN1gSBSbnvIdYwwqnvCV4Mc=
@@ -34,6 +36,8 @@ github.com/aws/constructs-go/constructs/v3 v3.4.232/go.mod h1:ejR5Hd2llgfqo68taM
 github.com/aws/jsii-runtime-go v1.91.0/go.mod h1:xLBI2fKjWK68+eqqmvkv4HL1f4YUPLiAi5BT3wNUD74=
 github.com/aws/jsii-runtime-go v1.92.0 h1:2Uk81AmgQ+p1tkRpcA01XXiqrXcaGIyTZS6HGY2ni6w=
 github.com/aws/jsii-runtime-go v1.92.0/go.mod h1:nwCGoF0yOzfgXL3B47zRS30rSskPQFkPFqZgEyMQ59I=
+github.com/aws/jsii-runtime-go v1.93.0 h1:QIFUKmsU0NpYZPhP24WSFn74PWlUKgJV6eQIe5/BfBU=
+github.com/aws/jsii-runtime-go v1.93.0/go.mod h1:D7yFSwtXpTMqVB3c5IHQ1Z42p+pgkTkU7FqKBll33Sk=
 github.com/aws/smithy-go v1.17.0 h1:wWJD7LX6PBV6etBUwO0zElG0nWN9rUhp0WdYeHSHAaI=
 github.com/aws/smithy-go v1.17.0/go.mod h1:NukqUGpCZIILqqiV0NIjeFh24kd/FAa4beRb6nbIUPE=
 github.com/cdklabs/awscdk-asset-awscli-go/awscliv1/v2 v2.2.201 h1:0za9Qxne1jWawrxUnoli/zDVgBptS5nZpFrdLmxP5wA=
@@ -72,4 +76,6 @@ golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/tools v0.0.0-20200130002326-2f3ba24bd6e7/go.mod h1:TB2adYChydJhpapKDTa4BR/hXlZSLoq2Wpct/0txZ28=
 golang.org/x/tools v0.15.0 h1:zdAyfUGbYmuVokhzVmghFl2ZJh5QhcfebBgmVPFYA+8=
 golang.org/x/tools v0.15.0/go.mod h1:hpksKq4dtpQWS1uQ61JkdqWM3LscIS6Slf+VVkm+wQk=
+golang.org/x/tools v0.16.0 h1:GO788SKMRunPIBCXiQyo2AaexLstOrVhuAL5YwsckQM=
+golang.org/x/tools v0.16.0/go.mod h1:kYVVN6I1mBNoB1OX+noeBjbRk4IUEPa7JJ+TJMEooJ0=
 golang.org/x/xerrors v0.0.0-20191011141410-1b5146add898/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
