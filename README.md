@@ -1,6 +1,6 @@
-# Welcome to your CDK Go project!
+# Welcome to cloud-template-guard
 
-This is a blank project for CDK development with Go.
+This is a project made with CDK and Go.
 
 The `cdk.json` file tells the CDK toolkit how to execute your app.
 
