@@ -21,10 +21,6 @@ type config struct {
 	Debug bool
 }
 
-type application struct {
-	config config
-}
-
 type CdkGoStackProps struct {
 	awscdk.StackProps
 }
@@ -46,12 +42,6 @@ func NewCdkGoStack(scope constructs.Construct,
 		})
 
 	fmt.Println(cfnTemplate.Stack())
-	// var bucket = awss3.NewBucket(stack,
-	// 	jsii.String("CdkGoBucket"), &awss3.BucketProps{
-	// 		Versioned: jsii.Bool(true),
-	// 	})
-
-	// println(bucket)
 
 	return stack
 }
