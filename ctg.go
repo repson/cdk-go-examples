@@ -4,7 +4,8 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/aws/aws-cdk-go/awscdk/v2"
+	cdk "github.com/aws/aws-cdk-go/awscdk/v2"
+	"github.com/aws/aws-cdk-go/awscdk/v2/awss3"
 	cfn_inc "github.com/aws/aws-cdk-go/awscdk/v2/cloudformationinclude"
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/aws/jsii-runtime-go"
@@ -18,19 +19,19 @@ type config struct {
 }
 
 type CtgStackProps struct {
-	awscdk.StackProps
+	cdk.StackProps
 }
 
 func CtgStack(scope constructs.Construct,
-	id string, cfg config, props *CtgStackProps) awscdk.Stack {
+	id string, cfg config, props *CtgStackProps) cdk.Stack {
 
-	var sprops awscdk.StackProps
+	var sprops cdk.StackProps
 
 	if props != nil {
 		sprops = props.StackProps
 	}
 
-	stack := awscdk.NewStack(scope, &id, &sprops)
+	stack := cdk.NewStack(scope, &id, &sprops)
 
 	cfnTemplate := cfn_inc.NewCfnInclude(
 		stack, jsii.String("Template"), &cfn_inc.CfnIncludeProps{
@@ -40,6 +41,23 @@ func CtgStack(scope constructs.Construct,
 	fmt.Println(cfnTemplate.Stack())
 
 	return stack
+}
+
+type ValidateS3IsPrefixAspect struct {
+	Prefix string
+}
+
+func (vpa *ValidateS3IsPrefixAspect) Visit(node constructs.IConstruct) {
+	fmt.Println("Visiting resource: " + *node.Node().Id())
+
+	if bucket, ok := node.(awss3.CfnBucket); ok { //&& strings.HasPrefix(*bucket.BucketName(), vpa.Prefix) {
+		fmt.Println("BucketName " + *bucket.BucketName())
+		cdk.Annotations_Of(node).AddInfo(jsii.String("Annotations: Each S3 Bucket name needs to start with " + vpa.Prefix))
+	}
+}
+
+func NewValidateS3IsPrefixAspect(prefix string) *ValidateS3IsPrefixAspect {
+	return &ValidateS3IsPrefixAspect{Prefix: prefix}
 }
 
 func main() {
@@ -52,14 +70,17 @@ func main() {
 	defer jsii.Close()
 	flag.Parse()
 
-	app := awscdk.NewApp(nil)
+	app := cdk.NewApp(nil)
 	CtgStack(app, "CdkGoStack", cfg, &CtgStackProps{
-		awscdk.StackProps{
-			Env: &awscdk.Environment{
+		cdk.StackProps{
+			Env: &cdk.Environment{
 				Account: jsii.String(cfg.Account),
 				Region:  jsii.String(cfg.Region),
 			},
 		},
 	})
+
+	cdk.Aspects_Of(app).Add(NewValidateS3IsPrefixAspect("myPrefix"))
+
 	app.Synth(nil)
 }
