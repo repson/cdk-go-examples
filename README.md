@@ -61,9 +61,11 @@ $ cdktf destroy
 $ curl -fsSL https://get.pulumi.com | sh
 $ pulumi new go
 $ go mod tidy
+
 $ pulumi config set gophersAPIPort 8080
 $ pulumi config set gophersAPIWatcherPort 8000
 $ pulumi up
+
 $ docker container ls
 $ curl localhost:8080/gophers
 $ pulumi destroy
