@@ -41,6 +41,8 @@ $ go run ctg.go -template templates/s3.yaml
 
 # cdk-tf
 
+## golang
+
 ```
 $ npm install --global cdktf-cli@latest
 $ cdktf init --template=go --providers=kreuzwerker/docker --local
@@ -52,6 +54,8 @@ $ cdktf destroy
 ```
 
 # pulumi
+
+## golang
 
 ```
 $ curl -fsSL https://get.pulumi.com | sh
