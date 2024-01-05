@@ -6,7 +6,6 @@ import (
 
 	cdk "github.com/aws/aws-cdk-go/awscdk/v2"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awss3"
-	cfn_inc "github.com/aws/aws-cdk-go/awscdk/v2/cloudformationinclude"
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/aws/jsii-runtime-go"
 )
@@ -40,6 +39,14 @@ func CtgStack(scope constructs.Construct,
 
 	fmt.Println(cfnTemplate.Stack())
 
+	bucket := awss3.NewBucket(node, jsii.String("Bucket"), &awss3.BucketProps{
+		BucketName: jsii.String("myBucket"),
+		Versioned:  jsii.Bool(true),
+		WebsiteRedirect: &awss3.RedirectTarget{
+			HostName: jsii.String("aws.amazon.com"),
+		},
+	})
+
 	return stack
 }
 
@@ -54,14 +61,6 @@ func (vpa *ValidateS3IsPrefixAspect) Visit(node constructs.IConstruct) {
 		fmt.Println("BucketName " + *bucket.BucketName())
 		cdk.Annotations_Of(node).AddInfo(jsii.String("Annotations: Each S3 Bucket name needs to start with " + vpa.Prefix))
 	}
-
-	bucket := awss3.NewBucket(node, jsii.String("Bucket"), &awss3.BucketProps{
-		BucketName: jsii.String("myBucket"),
-		Versioned:  jsii.Bool(true),
-		WebsiteRedirect: &awss3.RedirectTarget{
-			HostName: jsii.String("aws.amazon.com"),
-		},
-	})
 }
 
 func NewValidateS3IsPrefixAspect(prefix string) *ValidateS3IsPrefixAspect {
