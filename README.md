@@ -1,12 +1,34 @@
-# Welcome to cloud-template-guard
+# Welcome to cloud-development-libraries-tests
 
-This is a project made with AWS CDK (Cloud Development Kit) and Go.
+# cdk-aws
 
-The `cdk.json` file tells the CDK toolkit how to execute your app.
+```
+$ npm install aws-cdk-lib
+$ go mod tidy
+$ cdk synth
+```
 
-## Useful commands
+# cdk-tf
 
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
- * `go test`         run unit tests
+```
+$ npm install --global cdktf-cli@latest
+$ cdktf init --template=go --providers=kreuzwerker/docker --local
+$ go mod tidy
+$ cdktf deploy
+$ docker ps
+$ cdktf destroy
+```
+
+# pulumi
+
+```
+$ curl -fsSL https://get.pulumi.com | sh
+$ pulumi new go
+$ go mod tidy
+$ pulumi config set gophersAPIPort 8080
+$ pulumi config set gophersAPIWatcherPort 8000
+$ pulumi up
+$ docker container ls
+$ curl localhost:8080/gophers
+$ pulumi destroy
+```
