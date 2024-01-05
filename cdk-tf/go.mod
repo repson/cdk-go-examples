@@ -8,7 +8,7 @@ require github.com/hashicorp/terraform-cdk-go/cdktf v0.19.2
 
 require (
 	github.com/aws/jsii-runtime-go v1.91.0
-	github.com/cdktf/cdktf-provider-docker-go/docker/v3 v3.0.12
+	github.com/cdktf/cdktf-provider-docker-go/docker/v10 v10.0.0
 )
 
 require (
