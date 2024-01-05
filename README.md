@@ -5,7 +5,7 @@
 ```
 $ npm install aws-cdk-lib
 $ go mod tidy
-$ cdk synth
+$ go run ctg.go -template templates/s3.yaml
 ```
 
 # cdk-tf
