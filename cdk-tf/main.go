@@ -1,16 +1,15 @@
 package main
 
 import (
-	"github.com/aws/constructs-go/constructs/v10"
+	"github.com/aws/constructs-go/constructs/v10/constructs"
 	"github.com/aws/jsii-runtime-go"
-	"github.com/hashicorp/terraform-cdk-go/cdktf"
 
-	"github.com/hashicorp/cdktf-provider-docker-go/docker/v3/container"
-	"github.com/hashicorp/cdktf-provider-docker-go/docker/v3/image"
-	dockerprovider "github.com/hashicorp/cdktf-provider-docker-go/docker/v3/provider"
+	"github.com/cdktf/cdktf-provider-docker-go/docker/v3/container"
+	dockerprovider "github.com/cdktf/cdktf-provider-docker-go/docker/v3/provider"
+	"github.com/hashicorp/terraform-cdk-go/cdktf/terraformStack"
 )
 
-func NewMyStack(scope constructs.Construct, id string) cdktf.TerraformStack {
+func NewMyStack(scope constructs.Construct, id string) terraformStack.TerraformStack {
 	stack := cdktf.NewTerraformStack(scope, &id)
 
 	dockerprovider.NewProvider(stack, jsii.String("docker"), &dockerprovider.ProviderConfig{})

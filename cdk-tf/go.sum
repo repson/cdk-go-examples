@@ -4,6 +4,8 @@ github.com/aws/constructs-go/constructs/v10 v10.3.0 h1:LsjBIMiaDX/vqrXWhzTquBJ9p
 github.com/aws/constructs-go/constructs/v10 v10.3.0/go.mod h1:GgzwIwoRJ2UYsr3SU+JhAl+gq5j39bEMYf8ev3J+s9s=
 github.com/aws/jsii-runtime-go v1.91.0 h1:KJAgMbRY7/Cp2ocV5rIf4GmLBiFYYAMYVDeAebP2kfE=
 github.com/aws/jsii-runtime-go v1.91.0/go.mod h1:xLBI2fKjWK68+eqqmvkv4HL1f4YUPLiAi5BT3wNUD74=
+github.com/cdktf/cdktf-provider-docker-go/docker/v3 v3.0.12 h1:FqASfdhntnRiukSN9Jb5snZwLmcYLmDlNSANjZigcvo=
+github.com/cdktf/cdktf-provider-docker-go/docker/v3 v3.0.12/go.mod h1:ijvv8JD7xrM5tNN8wcZ+rv5LI1WBc2ZsWGXzM6+GmsU=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/fatih/color v1.15.0 h1:kOqh6YHBtK8aywxGerMG2Eq3H6Qgoqeo13Bk2Mv/nBs=
 github.com/fatih/color v1.15.0/go.mod h1:0h5ZqXfHYED7Bhv2ZJamyIOUej9KtShiJESRwBDUSsw=
